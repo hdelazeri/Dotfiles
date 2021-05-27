@@ -112,3 +112,7 @@ alias rm='rm -i'
 
 ### SETTING THE STARSHIP PROMPT ###
 eval "$(starship init zsh)"
+
+source /usr/share/nvm/init-nvm.sh
+
+[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
