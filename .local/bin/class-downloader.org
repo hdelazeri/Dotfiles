@@ -9,6 +9,8 @@
 - [[#defining-auxiliary-function][Defining Auxiliary Function]]
 - [[#input-processing][Input Processing]]
 - [[#obtaining-the-information][Obtaining the Information]]
+- [[#downloading-the-videos][Downloading the Videos]]
+- [[#finishing-up][Finishing up]]
 
 * About this script
 
@@ -126,9 +128,9 @@ mkdir -p "$OUTPUT_DIR"
 for i in $(seq 0 $((NUMBER_OF_VIDEOS - 1))); do
     info "Downloading: ${VIDEO_NAMES[i]}"
 
-    youtube-dl --newline --no-warnings --recode-video mp4 --merge-output-format mp4 --embed-thumbnail -o "$FULL_OUTPUT_PATH/%(title)s.%(ext)s" "${VIDEO_IDS[i]}" | \
+    youtube-dl --newline --no-warnings --recode-video mp4 --merge-output-format mp4 --embed-thumbnail -o "$FULL_OUTPUT_PATH/%(title)s.%(ext)s" -- "${VIDEO_IDS[i]}" | \
         grep --line-buffered -oP "\[download\].*?\K[0-9]+\.[0-9]" | \
-        sed -r "s/([0-9]+)\.[0-9]/XXX\n${VIDEO_NAMES[i]}\nVideo $((i + 1)) of $NUMBER_OF_VIDEOS\nXXX\n\1/"
+        sed -r "s;([0-9]+)\.[0-9];XXX\n${VIDEO_NAMES[i]}\nVideo $((i + 1)) of $NUMBER_OF_VIDEOS\nXXX\n\1;"
 done | dialog --colors --title "\ZbDownloading Videos\Zn" --gauge "Starting downloads..." 7 60
 #+END_SRC
 
