@@ -1,8 +1,8 @@
 ### EXPORT
 export TERM="xterm-256color"                      # getting proper colors
 export HISTORY_IGNORE="(ls|cd|pwd|exit|sudo reboot|history|cd -|cd ..)"
-export EDITOR="emacsclient -t -a ''"              # $EDITOR use Emacs in terminal
-export VISUAL="emacsclient -c -a emacs"           # $VISUAL use Emacs in GUI mode
+export EDITOR="nvim"                              # $EDITOR use Neovim in terminal
+export VISUAL="code"                              # $VISUAL use VS Code in GUI mode
 
 ### "bat" as manpager
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
@@ -75,7 +75,7 @@ IFS=$SAVEIFS
 # Path to your oh-my-zsh installation.
 ZSH=$HOME/.oh-my-zsh
 
-plugins=(git sudo rsync dotbare zsh-autosuggestions zsh-completions zsh-syntax-highlighting zsh-interactive-cd)
+plugins=(git sudo rsync dotbare zsh-autosuggestions zsh-completions zsh-syntax-highlighting)
 
 autoload -U compinit && compinit
 
@@ -86,12 +86,6 @@ source $ZSH/oh-my-zsh.sh
 
 # vim and emacs
 alias vim="nvim"
-alias em="/usr/bin/emacs -nw"
-alias emacs="emacsclient -c -a 'emacs'"
-alias doomsync="~/.emacs.d/bin/doom sync"
-alias doomdoctor="~/.emacs.d/bin/doom doctor"
-alias doomupgrade="~/.emacs.d/bin/doom upgrade"
-alias doompurge="~/.emacs.d/bin/doom purge"
 
 # Changing "ls" to "exa"
 alias ls='exa -al --color=always --group-directories-first' # my preferred listing
